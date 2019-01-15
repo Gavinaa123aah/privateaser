@@ -208,3 +208,21 @@ for(i in events){
 }
 console.log(booking_price2)
 
+//step3
+var booking_price3=[]
+
+for(i in booking_price2){
+  var commission = booking_price2[i].price * 0.3
+  var insurance = commission*0.5
+  var treasury = 1
+  var privateaser = commission-insurance-treasury
+  var obj_commission = new Object()
+  obj_commission["insurance"] = insurance
+  obj_commission["treasury"] = treasury
+  obj_commission["privateaser"] = privateaser
+  var obj = new Object()
+  obj["id"]=booking_price2[i].id
+  obj["commission"] = obj_commission
+  booking_price3.push(obj)
+}
+console.log(booking_price3)
