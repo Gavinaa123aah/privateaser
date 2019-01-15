@@ -226,3 +226,28 @@ for(i in booking_price2){
   booking_price3.push(obj)
 }
 console.log(booking_price3)
+
+//step4
+var booking_price4=[]
+for (i in events){
+  for(j in bars){
+    if(events[i].barId==bars[j].id){ 
+      var obj = new Object()
+      obj["id"]=events[i].id
+      var obj_options = new Object()
+      obj_options["deductibleReduction"]=events[i].options.deductibleReduction
+      obj["options"]=obj_options
+      if(events[i].options.deductibleReduction==true){
+        var price = events[i].time * bars[j].pricePerHour + events[i].persons * bars[j].pricePerPerson;
+        obj["price"]= price
+      }else{
+        var price = events[i].time * bars[j].pricePerHour + events[i].persons * bars[j].pricePerPerson;
+        obj["price"]= price
+      }
+      booking_price4.push(obj)
+      break;
+    }
+ 
+  }
+}
+console.log(booking_price4)
