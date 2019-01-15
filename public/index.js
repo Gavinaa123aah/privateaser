@@ -251,3 +251,23 @@ for (i in events){
   }
 }
 console.log(booking_price4)
+
+//step5
+for(i in actors){
+  for(j in booking_price2){
+    if(actors[i].eventId==booking_price2[j].id){
+      actors[i].payment[0].amount=booking_price2[j].price
+    }
+  }
+  for(j in booking_price3){
+    if(actors[i].eventId==booking_price3[j].id){
+      actors[i].payment[1].amount=actors[i].payment[0].amount-booking_price3[j].commission["insurance"]-booking_price3[j].commission["treasury"]-booking_price3[j].commission["privateaser"]
+      actors[i].payment[2].amount=booking_price3[j].commission["insurance"]
+      actors[i].payment[3].amount=booking_price3[j].commission["treasury"]
+      actors[i].payment[4].amount=booking_price3[j].commission["privateaser"]
+    
+    }
+
+  }
+}
+console.log(actors)
