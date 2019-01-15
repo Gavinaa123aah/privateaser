@@ -149,6 +149,8 @@ const actors = [{
 console.log(bars);
 console.log(events);
 console.log(actors);
+
+//step 1
 var booking_price=[];
 
 for(var i = 0;i<events.length;i++){
@@ -163,4 +165,46 @@ for(var i = 0;i<events.length;i++){
     }
   }
 }
+
 console.log(booking_price);
+
+//step 2
+var booking_price2=[]
+
+for(i in events){
+  for(j in bars){
+    if(events[i].barId==bars[j].id){
+      if(events[i].persons>=10 && events[i].persons<20){
+        var pricePerPerson = bars[j].pricePerPerson*0.9
+        let obj = new Object()
+        var price = events[i].time * bars[j].pricePerHour + events[i].persons * pricePerPerson;
+        obj["id"] = events[i].id
+        obj["price"] = price
+        booking_price2.push(obj)
+      }else if(events[i].persons>=20 && events[i].persons<60){
+        var pricePerPerson = bars[j].pricePerPerson*0.7
+        let obj = new Object()
+        var price = events[i].time * bars[j].pricePerHour + events[i].persons * pricePerPerson;
+        obj["id"] = events[i].id
+        obj["price"] = price
+        booking_price2.push(obj)
+      }else if(events[i].persons>=60){
+        var pricePerPerson = bars[j].pricePerPerson*0.5
+        let obj = new Object()
+        var price = events[i].time * bars[j].pricePerHour + events[i].persons * pricePerPerson;
+        obj["id"] = events[i].id
+        obj["price"] = price
+        booking_price2.push(obj)
+      }else{
+        var pricePerPerson = bars[j].pricePerPerson
+        let obj = new Object()
+        var price = events[i].time * bars[j].pricePerHour + events[i].persons * pricePerPerson;
+        obj["id"] = events[i].id
+        obj["price"] = price
+        booking_price2.push(obj)
+      }
+    }
+  }
+}
+console.log(booking_price2)
+
